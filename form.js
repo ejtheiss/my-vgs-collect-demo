@@ -1,7 +1,7 @@
 const vgsForm = window.VGSCollect.create(
   'tntjhqlhdyl',
   'sandbox', 
-  (state) => {}).setRouteId('04dac166-a200-42bb-8030-8687a1ce47b0');
+  (state) => {}).setRouteId('9fc47b21-c74b-463b-9875-d8515a33e052');
 
 const css = {
   boxSizing: 'border-box',
