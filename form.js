@@ -47,49 +47,17 @@ const cardExpDate = vgsForm.field('#cc-expiration-date', {
   });
 
 const submitVGSCollectForm = () => {
-  const submitButton = document.querySelector('#vgs-collect-form button[type="submit"]');
-  
-  // Change button text to "Processing..."
-  submitButton.textContent = 'Processing...';
-  submitButton.disabled = true; // Disable button to prevent multiple submissions
-
-  vgsForm.submit('/post', {}, (status, data) => {
+   vgsForm.submit('/post', {}, (status, data) => {
     if (status >= 200 && status <= 300) {
-      console.log('Tokenized data received:', data); // Log tokenized card info
-
-      // Change button text to "Complete"
-      submitButton.textContent = 'Complete';
-      submitButton.disabled = true; // Keep button disabled after success
-
-      // Optional: Reset button after a few seconds
-      setTimeout(() => {
-        submitButton.textContent = 'Submit';
-        submitButton.disabled = false;
-      }, 3000); // Reset after 3 seconds
-    } else if (!status) {
-      console.error('Network Error occurred');
-      displayErrorMessage('Network error occurred. Please try again.');
-
-      // Reset button text
-      submitButton.textContent = 'Submit';
-      submitButton.disabled = false;
-    } else {
-      console.error('Server Error:', status, data);
-      displayErrorMessage('Server error. Please try again later.');
-
-      // Reset button text
-      submitButton.textContent = 'Submit';
-      submitButton.disabled = false;
-    }
+      // Successful response
+      } else if (!status) {
+      // Network Error occured
+      } else {
+      // Server Error
+      }
   }, (validationError) => {
-    console.error('Validation Error:', validationError);
-    displayErrorMessage('Validation failed. Please check your inputs.');
-
-    // Reset button text
-    submitButton.textContent = 'Submit';
-    submitButton.disabled = false;
-  });
-};
+    // Form validation error
+    });
 }
 
 document.getElementById('vgs-collect-form').addEventListener('submit', (e) => {
